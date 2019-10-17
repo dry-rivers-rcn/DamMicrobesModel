@@ -6,8 +6,8 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Next Steps 
-# -Add 
-
+# -Add conservative solute flux
+# -Add reactive solut flux
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #1.0 Setup Workspace------------------------------------------------------------
@@ -24,7 +24,7 @@ reach_slope <- 0.0003       # Slope of each reach
 reach_bkf_depth <- 1    # Bankful depth
 reach_wd_ratio <- 5       # Width to depth ratio of bankful channel
 reach_roughness<-0.07      # Mannings N
-simulation_length<-2       # days
+simulation_length<-6       # days
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,7 +82,10 @@ kinematic_wave<-function(Q_in,                    #Inflow
   Q_out
 }
 
-#Conservative Solute Flux-------------------------------------------------------
+#4.2 Conservative Solute Flux---------------------------------------------------
+
+
+#4.3 Reactive solute flux-------------------------------------------------------
 
 
 
@@ -101,6 +104,6 @@ df<-df %>%
   #Add time_hr 
   mutate(time_hr = time/3600)
 
-plot(df$time_hr, df$Q_in, type="l")
+plot(df$time_hr, df$Q_in, type="l", xlab="Time [hr]", ylab="Flow [cms]", ps=12, cex.lab=14/12, cex.axis=10/12)
 points(df$time_hr, df$Q_out, col="red", type="l")
 
